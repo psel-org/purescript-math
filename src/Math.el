@@ -22,13 +22,16 @@
     (lambda (x)
       (atan y x))))
 
+(defun Math._isFinite (n)
+  (not (or (isnan n)
+           (= n 1.0e+INF)
+           (= n -1.0e+INF))))
+
 (defvar Math.ceil
   (lambda (x)
-    (float (ceiling x))))
-
-(defvar Math.ceilToInt
-  (lambda (x)
-    (ceiling x)))
+    (if (Math._isFinite x)
+        (float (ceiling x))
+      x)))
 
 (defvar Math.cos
   (symbol-function 'cos))
@@ -38,11 +41,9 @@
 
 (defvar Math.floor
   (lambda (x)
-    (float (floor x))))
-
-(defvar Math.floorToInt
-  (lambda (x)
-    (floor x)))
+    (if (Math._isFinite x)
+        (float (floor x))
+      x)))
 
 ;; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/imul
 ;; We are probably not going to need this one.
@@ -71,11 +72,9 @@
 
 (defvar Math.round
   (lambda (x)
-    (float (round x))))
-
-(defvar Math.roundToInt
-  (lambda (x)
-    (round x)))
+    (if (Math._isFinite x)
+        (float (round x))
+      x)))
 
 (defvar Math.sin
   (symbol-function 'sin))
@@ -88,15 +87,11 @@
 
 (defvar Math.trunc
   (lambda (n)
-    (if (< n 0)
-        (float (ceiling n))
-      (float (floor n)))))
-
-(defvar Math.truncToInt
-  (lambda (n)
-    (if (< n 0)
-        (ceiling n)
-      (floor n))))
+    (if (Math._isFinite n)
+        (if (< n 0)
+            (float (ceiling n))
+          (float (floor n)))
+      n)))
 
 (defvar Math.remainder
   (lambda (n)
