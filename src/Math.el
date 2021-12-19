@@ -88,9 +88,7 @@
 (defvar Math.trunc
   (lambda (n)
     (if (Math._isFinite n)
-        (if (< n 0)
-            (float (ceiling n))
-          (float (floor n)))
+        (float (truncate n))
       n)))
 
 (defvar Math.remainder
