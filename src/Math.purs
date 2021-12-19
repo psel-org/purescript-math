@@ -26,6 +26,7 @@ foreign import atan2 :: Number -> Number -> Radians
 
 -- | Returns the smallest integer not smaller than the argument.
 foreign import ceil :: Number -> Number
+foreign import ceilToInt :: Number -> Int
 
 -- | Returns the cosine of the argument.
 foreign import cos :: Radians -> Number
@@ -35,6 +36,7 @@ foreign import exp :: Number -> Number
 
 -- | Returns the largest integer not larger than the argument.
 foreign import floor :: Number -> Number
+foreign import floorToInt :: Number -> Int
 
 -- | Returns the result of the C-like 32-bit multiplication of the two arguments.
 foreign import imul :: Int -> Int -> Int
@@ -53,6 +55,7 @@ foreign import pow :: Number -> Number -> Number
 
 -- | Returns the integer closest to the argument.
 foreign import round :: Number -> Number
+foreign import roundToInt :: Number -> Int
 
 -- | Returns the sine of the argument.
 foreign import sin :: Radians -> Number
@@ -66,6 +69,7 @@ foreign import tan :: Radians -> Number
 -- | Truncates the decimal portion of a number. Equivalent to `floor` if the
 -- | number is positive, and `ceil` if the number is negative.
 foreign import trunc :: Number -> Number
+foreign import truncToInt :: Number -> Int
 
 -- | Computes the remainder after division, wrapping Javascript's `%` operator.
 foreign import remainder :: Number -> Number -> Number
